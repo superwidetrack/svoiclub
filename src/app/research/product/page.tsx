@@ -36,48 +36,54 @@ const tooltipStyle = {
 const matchingDimensions = [
   { dimension: "Ценности", weight: 25 },
   { dimension: "Привязанность", weight: 20 },
-  { dimension: "Жизн. этап", weight: 18 },
-  { dimension: "Эмоц. интеллект", weight: 15 },
-  { dimension: "Культурный код", weight: 12 },
-  { dimension: "Интересы", weight: 10 },
+  { dimension: "Жизн. цели", weight: 20 },
+  { dimension: "Big Five", weight: 15 },
+  { dimension: "Эмиграция", weight: 10 },
+  { dimension: "Языки любви", weight: 5 },
+  { dimension: "Интервью", weight: 5 },
 ];
 
 const compatibilityProfile = [
-  { trait: "Открытость", user1: 85, user2: 78 },
-  { trait: "Стабильность", user1: 70, user2: 75 },
-  { trait: "Амбиции", user1: 90, user2: 88 },
-  { trait: "Эмпатия", user1: 82, user2: 85 },
-  { trait: "Автономия", user1: 65, user2: 70 },
-  { trait: "Традиции", user1: 55, user2: 60 },
+  { trait: "Открытость", user1: 82, user2: 78 },
+  { trait: "Добросовестность", user1: 65, user2: 72 },
+  { trait: "Экстраверсия", user1: 45, user2: 60 },
+  { trait: "Доброжелательность", user1: 78, user2: 85 },
+  { trait: "Эмоц. стабильность", user1: 68, user2: 74 },
+  { trait: "Ценности", user1: 88, user2: 90 },
 ];
 
 const questionnaireCategories = [
   {
-    category: "Ценности и приоритеты",
-    questions: 12,
-    examples: ["Что для вас означает «успех» в жизни?", "Как вы видите баланс карьеры и семьи?", "Что вы готовы отстаивать в отношениях?"],
+    category: "Big Five (OCEAN)",
+    questions: 24,
+    examples: ["Мне важна интеллектуальная стимуляция в паре", "Я планирую жизнь на годы вперёд", "Я заряжаюсь энергией от общения с людьми"],
   },
   {
     category: "Стиль привязанности",
-    questions: 8,
-    examples: ["Как вы переживаете конфликты в паре?", "Что помогает вам чувствовать себя любимым/ой?", "Как вы выражаете заботу?"],
+    questions: 14,
+    examples: ["Когда партнёр не отвечает, я начинаю тревожиться", "Мне сложно полностью довериться другому", "В конфликте мне важно быстро помириться"],
   },
   {
-    category: "Эмигрантский контекст",
-    questions: 6,
-    examples: ["Планируете ли вы вернуться на родину?", "Как эмиграция изменила ваши ценности?", "Язык общения дома: русский или другой?"],
+    category: "Ценности (Schwartz)",
+    questions: 16,
+    examples: ["Свобода выбора важнее стабильности", "Семейные традиции важны для меня", "Карьерный успех — мой приоритет"],
   },
   {
-    category: "Психологическая зрелость",
+    category: "Отношения и dealbreakers",
     questions: 10,
-    examples: ["Как вы справляетесь со стрессом?", "Опишите ваш опыт с терапией", "Что вы узнали из прошлых отношений?"],
+    examples: ["Что вы ищете прямо сейчас?", "Насколько важна физическая привлекательность?", "Готовы ли вы к отношениям на расстоянии?"],
+  },
+  {
+    category: "Эмиграционный профиль",
+    questions: 8,
+    examples: ["Как вы идентифицируете себя за рубежом?", "Планируете ли вы вернуться?", "На каком языке ведёте внутренний диалог?"],
   },
 ];
 
 const uxFlowSteps = [
   { step: 1, name: "Заявка на сайте", desc: "Email + страна + возраст", duration: "2 мин", icon: "📝" },
-  { step: 2, name: "Подробная анкета", desc: "36 вопросов в 4 блоках", duration: "20 мин", icon: "📋" },
-  { step: 3, name: "Психотест", desc: "Attachment + EQ assessment", duration: "15 мин", icon: "🧠" },
+  { step: 2, name: "Подробная анкета", desc: "68 вопросов в 5 блоках", duration: "38 мин", icon: "📋" },
+  { step: 3, name: "Психопрофиль", desc: "Big Five + Attachment + Schwartz", duration: "входит в анкету", icon: "🧠" },
   { step: 4, name: "Видео-интервью", desc: "15-20 мин с куратором", duration: "20 мин", icon: "🎥" },
   { step: 5, name: "Профиль", desc: "Создание внутреннего профиля", duration: "10 мин", icon: "👤" },
   { step: 6, name: "Матчинг", desc: "Ручной подбор + алгоритм", duration: "1-7 дней", icon: "💎" },
@@ -106,9 +112,9 @@ export default function ProductPage() {
     >
       {/* Key stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-        <StatCard label="Вопросов" value="36" icon="◇" />
-        <StatCard label="Параметров матча" value="6" />
-        <StatCard label="Время онбординга" value="~60 мин" />
+        <StatCard label="Вопросов" value="68" icon="◇" />
+        <StatCard label="Параметров матча" value="7" />
+        <StatCard label="Время онбординга" value="~58 мин" />
         <StatCard label="MVP готовность" value="4 нед." />
       </div>
 
