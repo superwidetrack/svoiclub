@@ -2,6 +2,16 @@ import Link from "next/link";
 import ResearchLayout from "@/components/research/ResearchLayout";
 import { getDocsStatus, type DocStatus } from "@/lib/docs";
 
+const featuredSection = {
+  file: "GROWTH-PLAYBOOK.md",
+  href: "/research/growth",
+  title: "Маркетинговый Playbook",
+  description:
+    "Пошаговое руководство по продвижению проекта. Конкретные действия, шаблоны, чеклисты — всё, что нужно нетехническим фаундерам для запуска.",
+  icon: "▶",
+  color: "from-gold/30 to-amber-500/20",
+};
+
 const sections = [
   {
     file: "COMPETITORS.md",
@@ -39,6 +49,15 @@ const sections = [
     icon: "◇",
     color: "from-purple-500/20 to-pink-500/20",
   },
+  {
+    file: "GEO-STRATEGY.md",
+    href: "/research/geo-strategy",
+    title: "География запуска: США vs Мир",
+    description:
+      "Сравнение регионов по размеру диаспоры, платёжеспособности и стратегии выхода на рынок.",
+    icon: "◐",
+    color: "from-cyan-500/20 to-blue-500/20",
+  },
 ];
 
 function StatusBadge({ status }: { status: DocStatus }) {
@@ -62,9 +81,13 @@ export const dynamic = "force-dynamic";
 
 export default async function ResearchDashboard() {
   const statuses = await getDocsStatus();
-  const readyCount = Object.values(statuses).filter(
+  const allFiles = { ...statuses };
+  const readyCount = Object.values(allFiles).filter(
     (s) => s === "ready"
   ).length;
+  const totalCount = Object.keys(allFiles).length;
+  const featuredStatus = allFiles[featuredSection.file];
+  const featuredReady = featuredStatus === "ready";
 
   return (
     <ResearchLayout
@@ -78,16 +101,45 @@ export default async function ResearchDashboard() {
             Прогресс исследования
           </span>
           <span className="text-sm text-gold">
-            {readyCount}/4 разделов
+            {readyCount}/{totalCount} разделов
           </span>
         </div>
         <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-gold to-gold-light rounded-full transition-all duration-500"
-            style={{ width: `${(readyCount / 4) * 100}%` }}
+            style={{ width: `${(readyCount / totalCount) * 100}%` }}
           />
         </div>
       </div>
+
+      {/* Featured: Growth Playbook */}
+      <Link
+        href={featuredSection.href}
+        className={`group relative mb-6 p-8 rounded-2xl border-2 border-gold/30 hover:border-gold/50 bg-gradient-to-br from-gold/[0.07] to-surface transition-all duration-300 hover:shadow-[0_0_60px_rgba(201,169,110,0.15)] block ${
+          !featuredReady ? "opacity-70" : ""
+        }`}
+      >
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="relative flex flex-col sm:flex-row sm:items-center gap-6">
+          <div className="w-14 h-14 rounded-2xl bg-gold/15 border border-gold/30 flex items-center justify-center shrink-0">
+            <span className="text-2xl text-gold">{featuredSection.icon}</span>
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-3 mb-2">
+              <h3 className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">
+                {featuredSection.title}
+              </h3>
+              <StatusBadge status={featuredStatus} />
+            </div>
+            <p className="text-sm text-foreground/50 leading-relaxed max-w-2xl">
+              {featuredSection.description}
+            </p>
+          </div>
+          <div className="text-gold/40 group-hover:text-gold transition-colors text-xl shrink-0">
+            →
+          </div>
+        </div>
+      </Link>
 
       {/* Section cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

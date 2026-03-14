@@ -7,6 +7,8 @@ const ALLOWED_FILES = [
   "AUDIENCE.md",
   "MARKETING-STRATEGY.md",
   "PRODUCT-DESIGN.md",
+  "GROWTH-PLAYBOOK.md",
+  "GEO-STRATEGY.md",
 ];
 
 export async function GET(

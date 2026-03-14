@@ -9,6 +9,8 @@ const navItems = [
   { href: "/research/audience", label: "Аудитория", icon: "◉" },
   { href: "/research/marketing", label: "Маркетинг", icon: "◎" },
   { href: "/research/product", label: "Продукт", icon: "◇" },
+  { href: "/research/growth", label: "Playbook", icon: "▶" },
+  { href: "/research/geo-strategy", label: "География", icon: "◐" },
 ];
 
 export default function ResearchLayout({
