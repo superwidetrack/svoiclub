@@ -29,6 +29,9 @@ export default function Header() {
           <a href="#faq" className="animated-underline hover:text-foreground transition-colors">
             FAQ
           </a>
+          <a href="/research" className="animated-underline hover:text-foreground transition-colors">
+            Исследования
+          </a>
           <a
             href="#waitlist"
             className="ml-4 px-5 py-2 bg-gold/10 text-gold border border-gold/30 rounded-full text-sm hover:bg-gold/20 transition-colors"
@@ -67,6 +70,9 @@ export default function Header() {
           </a>
           <a href="#faq" onClick={() => setMenuOpen(false)} className="block text-foreground/70 hover:text-foreground">
             FAQ
+          </a>
+          <a href="/research" onClick={() => setMenuOpen(false)} className="block text-foreground/70 hover:text-foreground">
+            Исследования
           </a>
           <a
             href="#waitlist"
