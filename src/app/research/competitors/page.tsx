@@ -28,29 +28,32 @@ const GOLD_LIGHT = "#d4b87a";
 const MUTED = "#8a8a8a";
 
 const pricingData = [
-  { name: "Tawkify", price: 99, label: "$99/мес" },
-  { name: "Luxy", price: 59, label: "$59/мес" },
+  { name: "SoulMatcher", price: 150, label: "$150/мес" },
+  { name: "Luxy Black", price: 99, label: "$99/мес" },
+  { name: "HingeX", price: 50, label: "$50/мес" },
   { name: "Inner Circle", price: 40, label: "$40/мес" },
-  { name: "Raya", price: 8, label: "$8/мес" },
-  { name: "Hinge+", price: 50, label: "$50/мес" },
-  { name: "Свои Club", price: 49, label: "$49/мес" },
+  { name: "Hinge+", price: 35, label: "$35/мес" },
+  { name: "Bumble Pr.", price: 33, label: "$33/мес" },
+  { name: "RusDate", price: 24, label: "$24/мес" },
+  { name: "Raya", price: 10, label: "$10/мес" },
 ];
 
 const radarData = [
-  { feature: "Скрининг", Tawkify: 95, InnerCircle: 70, Raya: 90, SvoiClub: 85 },
-  { feature: "UX", Tawkify: 60, InnerCircle: 85, Raya: 90, SvoiClub: 80 },
-  { feature: "Матчинг", Tawkify: 90, InnerCircle: 50, Raya: 40, SvoiClub: 85 },
-  { feature: "Комьюнити", Tawkify: 30, InnerCircle: 80, Raya: 95, SvoiClub: 75 },
-  { feature: "Нишевость", Tawkify: 40, InnerCircle: 50, Raya: 60, SvoiClub: 95 },
-  { feature: "Психология", Tawkify: 70, InnerCircle: 20, Raya: 10, SvoiClub: 95 },
+  { feature: "Скрининг", Tawkify: 95, SoulMatcher: 80, RusDate: 20, SvoiClub: 90 },
+  { feature: "UX", Tawkify: 60, SoulMatcher: 75, RusDate: 30, SvoiClub: 80 },
+  { feature: "Матчинг", Tawkify: 90, SoulMatcher: 85, RusDate: 20, SvoiClub: 90 },
+  { feature: "Комьюнити", Tawkify: 30, SoulMatcher: 50, RusDate: 40, SvoiClub: 80 },
+  { feature: "Нишевость", Tawkify: 40, SoulMatcher: 60, RusDate: 85, SvoiClub: 95 },
+  { feature: "Психология", Tawkify: 70, SoulMatcher: 90, RusDate: 5, SvoiClub: 95 },
 ];
 
 const marketShareData = [
-  { name: "Tinder/Bumble", value: 45, color: "#ff6b6b" },
-  { name: "Hinge", value: 20, color: "#4ecdc4" },
-  { name: "Niche apps", value: 15, color: "#45b7d1" },
-  { name: "Matchmaking", value: 12, color: GOLD },
-  { name: "Other", value: 8, color: MUTED },
+  { name: "Tinder (Match Group)", value: 38, color: "#ff6b6b" },
+  { name: "Bumble", value: 18, color: "#ffa07a" },
+  { name: "Hinge", value: 18, color: "#4ecdc4" },
+  { name: "Niche / Curated", value: 15, color: "#45b7d1" },
+  { name: "Matchmaking", value: 6, color: GOLD },
+  { name: "Other", value: 5, color: MUTED },
 ];
 
 const tooltipStyle = {
@@ -84,15 +87,15 @@ export default function CompetitorsPage() {
     >
       {/* Key stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-        <StatCard label="Конкурентов" value="6+" icon="◈" />
-        <StatCard label="Средний чек" value="$51" change="+15% YoY" icon="$" />
-        <StatCard label="Рынок" value="$9.6B" change="+8.3% CAGR" icon="◆" />
+        <StatCard label="Конкурентов" value="20+" icon="◈" />
+        <StatCard label="Рынок (2025)" value="$11B" change="+7.3% CAGR" icon="$" />
+        <StatCard label="Premium сегмент" value="$1.2B" change="+9.5% CAGR" icon="◆" />
         <StatCard label="Наша ниша" value="Свободна" icon="◇" />
       </div>
 
       {/* Charts row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <ChartCard title="Ценообразование конкурентов" subtitle="Ежемесячная подписка, USD">
+        <ChartCard title="Ценообразование конкурентов" subtitle="Подписки приложений, USD/мес (мэтчмейкинг-агентства: $1,500–$300K отдельно)">
           <ResponsiveContainer width="100%" height={280}>
             <BarChart data={pricingData}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
@@ -110,7 +113,7 @@ export default function CompetitorsPage() {
                 {pricingData.map((entry, i) => (
                   <Cell
                     key={i}
-                    fill={entry.name === "Свои Club" ? GOLD : "rgba(255,255,255,0.1)"}
+                    fill={entry.name === "SoulMatcher" ? GOLD : "rgba(255,255,255,0.15)"}
                   />
                 ))}
               </Bar>
@@ -141,10 +144,17 @@ export default function CompetitorsPage() {
                 fillOpacity={0.05}
               />
               <Radar
-                name="Raya"
-                dataKey="Raya"
+                name="SoulMatcher"
+                dataKey="SoulMatcher"
                 stroke="#4ecdc4"
                 fill="#4ecdc4"
+                fillOpacity={0.05}
+              />
+              <Radar
+                name="RusDate"
+                dataKey="RusDate"
+                stroke="#ffa07a"
+                fill="#ffa07a"
                 fillOpacity={0.05}
               />
               <Legend
@@ -220,11 +230,13 @@ export default function CompetitorsPage() {
           </thead>
           <tbody>
             {[
-              ["Tawkify", "Matchmaking", "Анкета + звонок", "Все, США", "Культурный фокус + психология"],
-              ["Luxy", "Luxury swipe", "Верификация дохода", "Богатые", "Не про деньги, а про ценности"],
-              ["Inner Circle", "Curated app", "Соцсети-скрининг", "Городские профи", "Глубже, чем LinkedIn-check"],
-              ["Raya", "Exclusive app", "Комитет отбора", "Креативные", "Нишевое комьюнити, не элитизм"],
-              ["Hinge", "Mass market", "Нет", "Все", "Ручной подбор vs алгоритм"],
+              ["RusDate", "Freemium", "Модерация фото", "Эмигранты", "Интервью + психология + ценности"],
+              ["Tawkify", "Matchmaking", "Анкета + звонок", "Все, США", "Культурный фокус + доступная цена"],
+              ["SoulMatcher", "Premium club", "Заявка + AI", "Профессионалы", "Русский язык + эмигрантский контекст"],
+              ["Maclynn", "Psychology-led", "Интервью + PhD", "UHNW", "Доступнее в 100x при схожем подходе"],
+              ["Hinge", "Mass market", "Нет", "25–35, все", "Ручной подбор + скрининг vs алгоритм"],
+              ["Inner Circle", "Curated app", "LinkedIn-check", "Городские профи", "Глубже, чем формальный скрининг"],
+              ["Telegram группы", "Бесплатно", "Нет", "Эмигранты", "Безопасность + верификация + качество"],
             ].map((row, i) => (
               <tr key={i} className="hover:bg-white/[0.02] transition-colors">
                 {row.map((cell, j) => (
