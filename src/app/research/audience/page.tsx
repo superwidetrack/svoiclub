@@ -35,49 +35,50 @@ const tooltipStyle = {
 };
 
 const geographyData = [
-  { country: "Германия", population: 680000, target: 45000 },
-  { country: "США", population: 520000, target: 38000 },
-  { country: "Израиль", population: 450000, target: 32000 },
-  { country: "Канада", population: 280000, target: 20000 },
-  { country: "UK", population: 210000, target: 15000 },
-  { country: "Франция", population: 150000, target: 10000 },
-  { country: "ОАЭ", population: 85000, target: 7000 },
-  { country: "Испания", population: 70000, target: 5000 },
+  { country: "США", population: 3500000, target: 900000 },
+  { country: "Германия", population: 3000000, target: 750000 },
+  { country: "Израиль", population: 1300000, target: 600000 },
+  { country: "Канада", population: 622000, target: 500000 },
+  { country: "ОАЭ", population: 500000, target: 500000 },
+  { country: "Турция", population: 500000, target: 300000 },
+  { country: "UK", population: 300000, target: 250000 },
+  { country: "Грузия", population: 112000, target: 80000 },
+  { country: "Сербия", population: 110000, target: 120000 },
+  { country: "Кипр", population: 80000, target: 60000 },
 ];
 
 const ageData = [
-  { age: "18-24", percent: 12, color: "#45b7d1" },
-  { age: "25-30", percent: 28, color: GOLD },
-  { age: "31-35", percent: 32, color: "#c9a96e" },
-  { age: "36-40", percent: 18, color: "#b8944f" },
-  { age: "41-45", percent: 10, color: "#8a7040" },
+  { age: "18-24", percent: 15, color: "#45b7d1" },
+  { age: "25-29", percent: 22, color: GOLD },
+  { age: "30-34", percent: 26, color: "#c9a96e" },
+  { age: "35-39", percent: 22, color: "#b8944f" },
+  { age: "40-45", percent: 16, color: "#8a7040" },
 ];
 
 const professionData = [
-  { name: "IT / Tech", size: 28, fill: GOLD },
-  { name: "Финансы", size: 15, fill: "#b8944f" },
-  { name: "Медицина", size: 12, fill: "#45b7d1" },
-  { name: "Наука", size: 10, fill: "#4ecdc4" },
-  { name: "Бизнес", size: 14, fill: "#ff6b6b" },
-  { name: "Творчество", size: 8, fill: "#9b59b6" },
-  { name: "Юриспруд.", size: 7, fill: "#e67e22" },
-  { name: "Другое", size: 6, fill: "#8a8a8a" },
+  { name: "IT / Tech", size: 25, fill: GOLD },
+  { name: "Культура / Медиа", size: 15, fill: "#9b59b6" },
+  { name: "Финансы", size: 12, fill: "#b8944f" },
+  { name: "Наука / Образование", size: 10, fill: "#4ecdc4" },
+  { name: "Предприниматели", size: 10, fill: "#ff6b6b" },
+  { name: "Корпоративные", size: 20, fill: "#45b7d1" },
+  { name: "Другое", size: 8, fill: "#8a8a8a" },
 ];
 
 const tamSamSom = [
-  { metric: "TAM", value: 3200000, label: "3.2M чел.", desc: "Русскоязычные 25-45 за рубежом" },
-  { metric: "SAM", value: 640000, label: "640K чел.", desc: "Незамужние, в ключевых странах" },
-  { metric: "SOM", value: 12800, label: "12.8K чел.", desc: "Реально достижимые за 2 года" },
+  { metric: "TAM", value: 1450000, label: "1.45M чел.", desc: "Одинокие русскоязычные 25-45 за рубежом" },
+  { metric: "SAM", value: 196000, label: "196K чел.", desc: "Готовы к premium русскоязычному сервису" },
+  { metric: "SOM", value: 35000, label: "35K чел.", desc: "Реально достижимые за 3 года" },
 ];
 
 const growthData = [
-  { year: "2020", emigrants: 2400 },
-  { year: "2021", emigrants: 2600 },
-  { year: "2022", emigrants: 3800 },
-  { year: "2023", emigrants: 4200 },
-  { year: "2024", emigrants: 3900 },
-  { year: "2025", emigrants: 3500 },
-  { year: "2026*", emigrants: 3200 },
+  { year: "2020", emigrants: 60 },
+  { year: "2021", emigrants: 80 },
+  { year: "2022", emigrants: 668 },
+  { year: "2023", emigrants: 450 },
+  { year: "2024", emigrants: 109 },
+  { year: "2025", emigrants: 97 },
+  { year: "2026*", emigrants: 85 },
 ];
 
 // Custom content for treemap
@@ -147,10 +148,10 @@ export default function AudiencePage() {
 
       {/* Key stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-        <StatCard label="Стран" value="12+" icon="◉" />
-        <StatCard label="Ядро 25-35" value="60%" change="+5% vs 2023" />
-        <StatCard label="С высш. обр." value="78%" />
-        <StatCard label="Доход" value=">€50K" change="медиана" />
+        <StatCard label="Стран" value="18" icon="◉" />
+        <StatCard label="Ядро 25-35" value="48%" change="ср. возраст 32" />
+        <StatCard label="С высш. обр." value="80%" change="vs 27% по РФ" />
+        <StatCard label="Одиноки" value="52%" change="ищут пару" />
       </div>
 
       {/* Charts */}
@@ -158,7 +159,7 @@ export default function AudiencePage() {
         {/* Geography */}
         <ChartCard
           title="География диаспоры"
-          subtitle="Русскоязычные эмигранты 25-45, тыс. чел."
+          subtitle="Русскоязычное население и целевая аудитория 25-45"
         >
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={geographyData} layout="vertical">
@@ -223,7 +224,7 @@ export default function AudiencePage() {
 
         <ChartCard
           title="Волна эмиграции"
-          subtitle="Русскоязычных эмигрантов, тыс./год"
+          subtitle="Официальная эмиграция из РФ, тыс. чел./год"
         >
           <ResponsiveContainer width="100%" height={250}>
             <AreaChart data={growthData}>
@@ -251,9 +252,9 @@ export default function AudiencePage() {
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
-            { title: "Ценности", items: ["Семья и близкие отношения", "Личностный рост", "Карьерный успех", "Культурная идентичность"] },
-            { title: "Боли", items: ["Одиночество в чужой стране", "Поверхностные знакомства", "Культурный барьер в dating-apps", "Нехватка «своего круга»"] },
-            { title: "Ожидания", items: ["Серьёзный подход к подбору", "Приватность и безопасность", "Понимание эмигрантского контекста", "Качество, не количество"] },
+            { title: "Ценности", items: ["Свобода и автономия (92%)", "Интеллектуальная среда (85%)", "Общие культурные коды (82%)", "Семья и отношения (76%)"] },
+            { title: "Боли", items: ["29% часто чувствуют одиночество", "72% недовольны dating-apps", "Языковой барьер в романтике", "28% планируют снова переехать"] },
+            { title: "Ожидания", items: ["Верификация и screening (критично)", "Психологическая совместимость", "Кросс-страновой matching", "Community, не просто app"] },
           ].map((block) => (
             <div key={block.title} className="p-5 rounded-xl bg-surface border border-white/5">
               <h4 className="text-sm font-medium text-gold/70 uppercase tracking-wider mb-3">
