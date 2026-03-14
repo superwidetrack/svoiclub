@@ -1,6 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import ResearchLayout from "@/components/research/ResearchLayout";
-import { getDocsStatus, type DocStatus } from "@/lib/docs";
+import { DOC_FILES, getDocUrl, type DocStatus } from "@/lib/docs";
 
 const featuredSection = {
   file: "GROWTH-PLAYBOOK.md",
@@ -77,16 +80,32 @@ function StatusBadge({ status }: { status: DocStatus }) {
   );
 }
 
-export const dynamic = "force-dynamic";
+export default function ResearchDashboard() {
+  const [statuses, setStatuses] = useState<Record<string, DocStatus>>({});
+  const [loaded, setLoaded] = useState(false);
 
-export default async function ResearchDashboard() {
-  const statuses = await getDocsStatus();
-  const allFiles = { ...statuses };
-  const readyCount = Object.values(allFiles).filter(
-    (s) => s === "ready"
-  ).length;
-  const totalCount = Object.keys(allFiles).length;
-  const featuredStatus = allFiles[featuredSection.file];
+  useEffect(() => {
+    async function checkDocs() {
+      const results: Record<string, DocStatus> = {};
+      await Promise.all(
+        DOC_FILES.map(async (file) => {
+          try {
+            const res = await fetch(getDocUrl(file), { method: "HEAD" });
+            results[file] = res.ok ? "ready" : "pending";
+          } catch {
+            results[file] = "pending";
+          }
+        })
+      );
+      setStatuses(results);
+      setLoaded(true);
+    }
+    checkDocs();
+  }, []);
+
+  const readyCount = Object.values(statuses).filter((s) => s === "ready").length;
+  const totalCount = DOC_FILES.length;
+  const featuredStatus = statuses[featuredSection.file] || "pending";
   const featuredReady = featuredStatus === "ready";
 
   return (
@@ -101,7 +120,7 @@ export default async function ResearchDashboard() {
             Прогресс исследования
           </span>
           <span className="text-sm text-gold">
-            {readyCount}/{totalCount} разделов
+            {loaded ? `${readyCount}/${totalCount}` : "..."} разделов
           </span>
         </div>
         <div className="h-1.5 bg-white/5 rounded-full overflow-hidden">
@@ -144,7 +163,7 @@ export default async function ResearchDashboard() {
       {/* Section cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {sections.map((section) => {
-          const status = statuses[section.file];
+          const status = statuses[section.file] || "pending";
           const isReady = status === "ready";
 
           return (
@@ -155,29 +174,22 @@ export default async function ResearchDashboard() {
                 !isReady ? "opacity-70" : ""
               }`}
             >
-              {/* Gradient blob */}
               <div
                 className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${section.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}
               />
-
               <div className="relative">
-                {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <span className="text-2xl text-gold/40 group-hover:text-gold/60 transition-colors">
                     {section.icon}
                   </span>
                   <StatusBadge status={status} />
                 </div>
-
-                {/* Content */}
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl mb-2 group-hover:text-gradient-gold transition-colors">
                   {section.title}
                 </h3>
                 <p className="text-sm text-foreground/40 leading-relaxed">
                   {section.description}
                 </p>
-
-                {/* Arrow */}
                 <div className="mt-4 text-foreground/20 group-hover:text-gold/60 transition-colors text-sm">
                   {isReady ? "Открыть →" : "Скоро →"}
                 </div>
@@ -190,27 +202,19 @@ export default async function ResearchDashboard() {
       {/* Quick stats */}
       <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div className="p-4 rounded-xl bg-surface border border-white/5 text-center">
-          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">
-            6+
-          </div>
+          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">6+</div>
           <div className="text-xs text-foreground/40 mt-1">конкурентов</div>
         </div>
         <div className="p-4 rounded-xl bg-surface border border-white/5 text-center">
-          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">
-            3M+
-          </div>
+          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">3M+</div>
           <div className="text-xs text-foreground/40 mt-1">TAM (чел.)</div>
         </div>
         <div className="p-4 rounded-xl bg-surface border border-white/5 text-center">
-          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">
-            8
-          </div>
+          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">8</div>
           <div className="text-xs text-foreground/40 mt-1">каналов</div>
         </div>
         <div className="p-4 rounded-xl bg-surface border border-white/5 text-center">
-          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">
-            MVP
-          </div>
+          <div className="font-[family-name:var(--font-playfair)] text-2xl text-gradient-gold">MVP</div>
           <div className="text-xs text-foreground/40 mt-1">фаза</div>
         </div>
       </div>

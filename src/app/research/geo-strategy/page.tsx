@@ -5,6 +5,7 @@ import ResearchLayout from "@/components/research/ResearchLayout";
 import MarkdownRenderer from "@/components/research/MarkdownRenderer";
 import ChartCard from "@/components/research/ChartCard";
 import StatCard from "@/components/research/StatCard";
+import { getDocUrl } from "@/lib/docs";
 import {
   BarChart,
   Bar,
@@ -118,7 +119,7 @@ export default function GeoStrategyPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/docs/GEO-STRATEGY.md")
+    fetch(getDocUrl("GEO-STRATEGY.md"))
       .then((r) => (r.ok ? r.text() : null))
       .then((text) => {
         setMarkdown(text);

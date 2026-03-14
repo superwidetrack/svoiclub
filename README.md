@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Свои Club
 
-## Getting Started
+**Закрытое сообщество для знакомств среди русскоязычных эмигрантов.**
 
-First, run the development server:
+🌐 [superwidetrack.github.io/svoiclub](https://superwidetrack.github.io/svoiclub)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Что это?
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Свои Club — это премиальный сервис знакомств для русскоязычных эмигрантов 25-45 лет, живущих за рубежом.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Мы — не приложение для свайпов. Мы подбираем пары на основе ценностей, психологической совместимости и жизненного контекста.
 
-## Learn More
+### Как это работает
 
-To learn more about Next.js, take a look at the following resources:
+1. **Анкета** — подробные вопросы о ваших ценностях и приоритетах
+2. **Психологический тест** — оценка совместимости по научным методикам
+3. **Личное интервью** — видеозвонок с куратором
+4. **Подбор пары** — ручной матчинг + алгоритм совместимости
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Для кого
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Образованные профессионалы за рубежом (IT, медицина, финансы, наука)
+- Ценят глубину, осознанность и серьёзный подход
+- Скучают по «своим» — людям с общим культурным кодом
+- Ищут партнёра для жизни, а не мимолётное увлечение
 
-## Deploy on Vercel
+### География
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Германия, США, Великобритания, Канада, Израиль, Франция, Нидерланды, ОАЭ и другие страны.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Исследования
+
+На сайте есть раздел [/research](https://superwidetrack.github.io/svoiclub/research) с полным стратегическим исследованием:
+
+- **Анализ конкурентов** — Tawkify, Luxy, Inner Circle, Raya и другие
+- **Целевая аудитория** — демография, TAM/SAM/SOM, психографика
+- **Маркетинговая стратегия** — каналы, unit economics, roadmap
+- **Продуктовый дизайн** — опросник, UX-флоу, модель совместимости
+- **Маркетинговый Playbook** — пошаговое руководство по запуску
+- **География запуска** — сравнение регионов, стратегия выхода
+
+---
+
+## Основатели
+
+Проект создан психологами-эмигрантами, которые сами прошли через опыт поиска «своих» за рубежом.
+
+---
+
+*Свои Club — найти своего человека среди своих.*
