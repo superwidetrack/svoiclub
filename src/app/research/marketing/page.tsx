@@ -36,40 +36,43 @@ const tooltipStyle = {
 };
 
 const channelData = [
-  { channel: "Telegram", cac: 12, ltv: 180, roi: 15 },
-  { channel: "Instagram", cac: 25, ltv: 160, roi: 6.4 },
-  { channel: "YouTube", cac: 35, ltv: 200, roi: 5.7 },
-  { channel: "Подкасты", cac: 40, ltv: 220, roi: 5.5 },
-  { channel: "Referral", cac: 8, ltv: 250, roi: 31 },
-  { channel: "PR / СМИ", cac: 15, ltv: 170, roi: 11 },
-  { channel: "Events", cac: 50, ltv: 190, roi: 3.8 },
-  { channel: "SEO", cac: 18, ltv: 150, roi: 8.3 },
+  { channel: "Telegram", cac: 62, ltv: 504, roi: 8.1 },
+  { channel: "Instagram", cac: 107, ltv: 504, roi: 4.7 },
+  { channel: "YouTube", cac: 117, ltv: 504, roi: 4.3 },
+  { channel: "Facebook", cac: 140, ltv: 504, roi: 3.6 },
+  { channel: "Referral", cac: 15, ltv: 504, roi: 33.6 },
+  { channel: "PR / СМИ", cac: 43, ltv: 504, roi: 11.7 },
+  { channel: "SEO / Блог", cac: 42, ltv: 504, roi: 12.0 },
 ];
 
 const funnelData = [
   { name: "Посетители сайта", value: 10000, fill: "rgba(255,255,255,0.08)" },
-  { name: "Заявки", value: 3000, fill: "rgba(201,169,110,0.15)" },
+  { name: "Заявки (waitlist)", value: 3000, fill: "rgba(201,169,110,0.15)" },
   { name: "Прошли анкету", value: 1800, fill: "rgba(201,169,110,0.25)" },
-  { name: "Интервью", value: 900, fill: "rgba(201,169,110,0.4)" },
-  { name: "Приняты", value: 600, fill: GOLD },
+  { name: "Видео-интервью", value: 720, fill: "rgba(201,169,110,0.4)" },
+  { name: "Приняты (30–40%)", value: 480, fill: GOLD },
 ];
 
 const revenueProjection = [
-  { month: "Мес 1", mrr: 0, users: 50 },
-  { month: "Мес 2", mrr: 2450, users: 120 },
-  { month: "Мес 3", mrr: 6860, users: 210 },
-  { month: "Мес 4", mrr: 12250, users: 320 },
-  { month: "Мес 5", mrr: 17640, users: 430 },
-  { month: "Мес 6", mrr: 24500, users: 560 },
-  { month: "Мес 9", mrr: 44100, users: 900 },
-  { month: "Мес 12", mrr: 73500, users: 1500 },
+  { month: "Мес 1", mrr: 0, users: 0 },
+  { month: "Мес 2", mrr: 0, users: 0 },
+  { month: "Мес 3", mrr: 0, users: 0 },
+  { month: "Мес 4", mrr: 3670, users: 200 },
+  { month: "Мес 5", mrr: 6925, users: 350 },
+  { month: "Мес 6", mrr: 11345, users: 500 },
+  { month: "Мес 7", mrr: 17440, users: 700 },
+  { month: "Мес 8", mrr: 23605, users: 900 },
+  { month: "Мес 9", mrr: 30640, users: 1100 },
+  { month: "Мес 10", mrr: 38075, users: 1300 },
+  { month: "Мес 11", mrr: 48985, users: 1600 },
+  { month: "Мес 12", mrr: 63700, users: 2000 },
 ];
 
 const roadmap = [
-  { phase: "Pre-launch", period: "Мес 1-2", tasks: ["Landing page", "Waitlist 500+", "Контент в Telegram", "Пилотные интервью"], status: "active" },
-  { phase: "Soft Launch", period: "Мес 3-4", tasks: ["Первые 100 участников", "Beta-матчинг", "Сбор отзывов", "Instagram-контент"], status: "planned" },
-  { phase: "Growth", period: "Мес 5-8", tasks: ["Реферальная программа", "PR-кампания", "Подкаст-коллабы", "500+ участников"], status: "planned" },
-  { phase: "Scale", period: "Мес 9-12", tasks: ["Монетизация", "Mobile app (v1)", "Экспансия в новые страны", "1500+ участников"], status: "planned" },
+  { phase: "Pre-launch", period: "Мес 1–3", tasks: ["Landing + waitlist (5,000)", "Telegram/Instagram контент", "Viral quiz запуск", "PR: VC.ru, Meduza", "Ambassador program"], status: "active" },
+  { phase: "Beta Launch", period: "Мес 4–5", tasks: ["Отбор 200 участников", "Скрининг + интервью", "Первые matches", "Оффлайн event (Берлин)"], status: "planned" },
+  { phase: "Growth", period: "Мес 6–9", tasks: ["Full launch (10 городов)", "Referral программа", "Product Hunt launch", "MRR → €30K"], status: "planned" },
+  { phase: "Scale", period: "Мес 10–12", tasks: ["USA launch (NY, LA)", "Mobile app", "2,000 участников", "ARR → €500–760K"], status: "planned" },
 ];
 
 export default function MarketingPage() {
@@ -93,26 +96,26 @@ export default function MarketingPage() {
     >
       {/* Key metrics */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-        <StatCard label="Target CAC" value="$15" icon="$" />
-        <StatCard label="LTV" value="$180" change="12:1 LTV/CAC" />
-        <StatCard label="MRR цель (12м)" value="$73.5K" />
-        <StatCard label="Каналов" value="8" icon="◎" />
+        <StatCard label="Blended CAC" value="€42" icon="$" />
+        <StatCard label="LTV" value="€504" change="12:1 LTV/CAC" />
+        <StatCard label="MRR цель (12м)" value="€63.7K" />
+        <StatCard label="Каналов" value="7" icon="◎" />
       </div>
 
       {/* Channel analysis + Revenue projection */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <ChartCard title="CAC по каналам" subtitle="Стоимость привлечения, USD">
+        <ChartCard title="CAC по каналам" subtitle="Стоимость привлечения платящего, EUR">
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={channelData} layout="vertical">
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
               <XAxis type="number" tick={{ fill: MUTED, fontSize: 10 }} axisLine={{ stroke: "rgba(255,255,255,0.05)" }} />
               <YAxis dataKey="channel" type="category" tick={{ fill: MUTED, fontSize: 11 }} width={80} axisLine={{ stroke: "rgba(255,255,255,0.05)" }} />
               <Tooltip {...tooltipStyle} />
-              <Bar dataKey="cac" name="CAC ($)" fill={GOLD} fillOpacity={0.6} radius={[0, 4, 4, 0]}>
+              <Bar dataKey="cac" name="CAC (€)" fill={GOLD} fillOpacity={0.6} radius={[0, 4, 4, 0]}>
                 {channelData.map((entry, i) => (
                   <Cell
                     key={i}
-                    fill={entry.cac < 20 ? "#4ecdc4" : entry.cac < 35 ? GOLD : "#ff6b6b"}
+                    fill={entry.cac < 50 ? "#4ecdc4" : entry.cac < 110 ? GOLD : "#ff6b6b"}
                     fillOpacity={0.5}
                   />
                 ))}
@@ -121,7 +124,7 @@ export default function MarketingPage() {
           </ResponsiveContainer>
         </ChartCard>
 
-        <ChartCard title="Прогноз MRR" subtitle="Проекция на 12 месяцев, USD">
+        <ChartCard title="Прогноз MRR" subtitle="Проекция на 12 месяцев, EUR">
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={revenueProjection}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
@@ -130,7 +133,7 @@ export default function MarketingPage() {
               <YAxis yAxisId="users" orientation="right" tick={{ fill: MUTED, fontSize: 10 }} axisLine={{ stroke: "rgba(255,255,255,0.05)" }} />
               <Tooltip {...tooltipStyle} />
               <Legend wrapperStyle={{ fontSize: "11px", color: MUTED }} />
-              <Line yAxisId="mrr" type="monotone" dataKey="mrr" name="MRR ($)" stroke={GOLD} strokeWidth={2} dot={{ fill: GOLD, r: 3 }} />
+              <Line yAxisId="mrr" type="monotone" dataKey="mrr" name="MRR (€)" stroke={GOLD} strokeWidth={2} dot={{ fill: GOLD, r: 3 }} />
               <Line yAxisId="users" type="monotone" dataKey="users" name="Пользователи" stroke="#4ecdc4" strokeWidth={2} dot={{ fill: "#4ecdc4", r: 3 }} strokeDasharray="4 4" />
             </LineChart>
           </ResponsiveContainer>
@@ -151,9 +154,10 @@ export default function MarketingPage() {
           </FunnelChart>
         </ResponsiveContainer>
         <div className="flex items-center justify-center gap-8 mt-4 text-xs text-foreground/40">
-          <span>Конверсия сайт→заявка: <span className="text-gold">30%</span></span>
-          <span>Заявка→интервью: <span className="text-gold">50%</span></span>
-          <span>Интервью→приняты: <span className="text-gold">67%</span></span>
+          <span>Сайт → заявка: <span className="text-gold">30%</span></span>
+          <span>Заявка → анкета: <span className="text-gold">60%</span></span>
+          <span>Анкета → интервью: <span className="text-gold">40%</span></span>
+          <span>Acceptance rate: <span className="text-gold">30–40%</span></span>
         </div>
       </ChartCard>
 
@@ -210,13 +214,14 @@ export default function MarketingPage() {
           </thead>
           <tbody>
             {[
-              ["ARPU", "$49/мес", "Средний чек подписки"],
-              ["CAC (blended)", "$15", "Средневзвешенный по каналам"],
-              ["LTV", "$180", "Средний срок подписки ~4 мес"],
-              ["LTV/CAC", "12:1", "Здоровый показатель (>3:1)"],
-              ["Payback period", "0.3 мес", "Быстрый возврат инвестиций"],
-              ["Churn rate", "~25%/мес", "Высокий для dating (норма)"],
-              ["Gross margin", "~85%", "Low marginal cost"],
+              ["ARPU", "€42/мес", "Средневзвешенный по тарифам (Free/Premium/VIP/Concierge)"],
+              ["CAC (blended)", "€42", "С учётом referral — €35–45"],
+              ["LTV", "€504", "ARPU × 80% margin × 15 мес avg lifetime"],
+              ["LTV/CAC", "12:1", "Benchmark: >3:1 — отлично"],
+              ["Payback period", "1.0 мес", "Быстрый возврат за счёт premium цен"],
+              ["Churn rate", "~5%/мес", "Premium аудитория = низкий churn"],
+              ["Gross margin", "~80%", "Основные расходы — команда, не infrastructure"],
+              ["Break-even", "Мес 8–9", "При MRR = €25,500"],
             ].map((row, i) => (
               <tr key={i} className="hover:bg-white/[0.02]">
                 <td className="px-4 py-3 border-t border-white/[0.03] text-foreground/80 font-medium">{row[0]}</td>
